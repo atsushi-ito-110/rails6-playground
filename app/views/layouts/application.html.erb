@@ -11,6 +11,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <section class="notification">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </section>
+    <header>
+      <% if user_signed_in? %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'ログイン', new_user_session_path %>
+      <% end %>
+    </header>
+    <div>
+      <%= yield %>
+    </div>
+    <footer></footer>
   </body>
 </html>
