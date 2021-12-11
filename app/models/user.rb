@@ -19,16 +19,17 @@ class User < ApplicationRecord
         logger.info(data)
         user = User.create!(
           email: data['email'],
-          name: email_to_name_by_before_at_mark(data['email']),
+          name: email_before_at_mark(data['email']),
           password: Devise.friendly_token[0,20],
-          confirmed_at: Time.now
+          confirmed_at: Time.now,
         )
       end
       user
     end
 
     private
-    def email_to_name_by_before_at_mark(email)
+    # emailの@マーク直前までを返します
+    def email_before_at_mark(email)
       /^[a-zA-Z0-9_.+-]+/.match(email).to_s
     end
   end
