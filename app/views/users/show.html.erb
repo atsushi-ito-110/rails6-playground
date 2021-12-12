@@ -1,0 +1,17 @@
+<h1>Users#show</h1>
+
+<button type="button" onclick="location.href='<%= edit_user_path(current_user) %>'">編集する</button>
+<div class="field">
+  <%= label @user, :name %><br />
+  <%= @user.name %>
+</div>
+
+<div class="field">
+  <%= label @user, :images %><br />
+  <% if @user.images.attached? %>
+    <% @user.images.each do |image| %>
+      <%= image_tag image.variant(resize: "100x100") %>
+    <% end %>
+  <% end %>
+</div>
+
