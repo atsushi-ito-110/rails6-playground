@@ -10,6 +10,8 @@ class User < ApplicationRecord
     validates :email
   end
 
+  has_many_attached :images
+
   class << self
     def from_omniauth(access_token)
       data = access_token.info

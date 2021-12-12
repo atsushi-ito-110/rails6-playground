@@ -14,6 +14,8 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 COPY Gemfile* /myapp/
 RUN bundle install
 # RUN rails webpacker:install
+RUN ["apt-get", "update"]
+RUN ["apt-get", "install", "-y", "vim"]
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/

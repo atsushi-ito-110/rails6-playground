@@ -12,18 +12,20 @@
 
   <body>
     <!-- TODO テンプレート化 .notification, header, footer -->
-    <section class="notification">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </section>
     <header>
       <% if user_signed_in? %>
+        <%= link_to 'マイページ', user_path(current_user) %>
         <%= link_to 'サインアウト', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'サインイン', new_user_session_path %>
         <%= link_to 'サインアップ', new_user_registration_path %>
       <% end %>
     </header>
+    <section class="notification">
+      <% flash.each do |key, value| %>
+        <p class="<%= key %>"><%= value %></p>
+      <% end %>
+    </section>
     <div>
       <%= yield %>
     </div>
