@@ -64,3 +64,5 @@ gem 'omniauth-rails_csrf_protection'
 
 gem 'mini_magick'
 gem 'aws-sdk-s3', require: false
+
+gem 'grape'
